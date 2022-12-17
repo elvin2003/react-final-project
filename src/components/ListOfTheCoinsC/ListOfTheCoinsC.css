@@ -1,0 +1,35 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  row-gap: 25px;
+}
+
+.grid-item {
+  display: flex;
+  gap: 30px;
+}
+
+.coinInfoTxt {
+  width: 224px;
+}
+
+.coinInfoTxt h3 {
+  margin-bottom: 6px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #833AE0;
+}
+
+.coinInfoTxt p {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.coinImg img {
+  width: 120px;
+}
