@@ -1,18 +1,25 @@
-
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux";
 import "./Header.css"
 
 function Header() {
+  let [formVisible, setFormVisible] = useState(false);
 
-  let [filterVisible,setFilterVisible] = useState(false);
+  let dispatch = useDispatch();
 
-  let filterClickHandler = ()=>{
-    if (!filterVisible){
-      setFilterVisible(true);
-    }else{
-      setFilterVisible(false);
+  useEffect(() => {
+    dispatch({
+      type: "ADVANCED_FILTER",
+      load: formVisible
+    })
+  }, [formVisible])
+
+  let filterClickHandler = () => {
+    if (!formVisible) {
+      setFormVisible(true);
+    } else {
+      setFormVisible(false);
     }
-    // console.log(filterVisible);
   }
 
   return (

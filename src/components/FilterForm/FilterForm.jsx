@@ -1,14 +1,20 @@
-import "./Form.css"
+import { useSelector } from "react-redux"
+import "./FilterForm.css"
 
-function Form() {
+function FilterForm() {
+  
+  let { formVisible } = useSelector(
+    function (e) {
+      return e;
+    }
+  );
 
-  return (
-    <header className='Form'>
+  return (formVisible &&
+    <header className='FilterForm'>
       <div>
         <form>
           <div className='form-body'>
             <div className='left'>
-
               <div>
                 <label>
                   Issuing country
@@ -92,4 +98,4 @@ function Form() {
 
 }
 
-export default Form
+export default FilterForm

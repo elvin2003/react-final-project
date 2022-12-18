@@ -18,7 +18,9 @@ function App() {
       <div className='container'>
         <Routes>
           <Route path="/" element={<HomePage1 />} />
-          <Route path="/listofthecoins" element={<ListOfTheCoins coinNameList={["Canadian Beaver"]} coinImgURLList={['./images/frontCanada.svg']} coinInfoList={['"Canadian beaver". Unique coin with the image of a beaver. Face value - 5 cents. Created under Elizabeth II.']}/>} />
+          <Route path="/listofthecoins" element={<ListOfTheCoins coinNameList={["Canadian Beaver","Kennedy","Looney","Canadian Cent","Jefferson","A penny"]} 
+          coinImgURLList={['./images/frontCanada.svg','./images/kennedyCoin.svg','./images/looneyCoin.svg','./images/canadianCent.svg','./images/jeffersonCoin.svg','./images/aPenny.svg']} 
+          coinInfoList={['"Canadian beaver". Unique coin with the image of a beaver. Face value - 5 cents. Created under Elizabeth II.','The unique coin is made in honor of the assassination of the 35th president of Texas.','"Looney". Unique coin with the image of a goat. Canadian dollar symbol.','"Canadian cent." A unique coin with the image of maple leaves - symbols of Canada. Face value - 1 cent.','Unique coin featuring Thomas Jefferson, the 3rd American president. Face value - 5 cents.','"A penny". A unique coin with a shield image with 13 vertical stripes.']}/>} />
           <Route path="/coinsdescription" element={<CoinsDescription coinFrontURL="./images/frontCanada.svg" coinBackURL="./images/backCanada.svg"
             // coinTitle, coinInfo, coinCountry, coinComposition, coinQuality, coinDenomination, coinYear, coinWeight, coinPrice
             coinTitle="Canadian Beaver" coinInfo={{
