@@ -4,9 +4,9 @@ import "./Categories.css"
 function Categories() {
   return (
     <div className="Categories">
-      <Category title="Bullion coins" imageUrl="./images/bullionCoins.svg"/>
-      <Category title="Exclusive coins" imageUrl="./images/exclusiveCoins.svg"/>
-      <Category title="Commemorative coins" imageUrl="./images/commemorativeCoins.svg"/>
+      <Category title="Bullion coins" imageUrl="./imageCategories/bullionCoins.svg"/>
+      <Category title="Exclusive coins" imageUrl="./imageCategories/exclusiveCoins.svg"/>
+      <Category title="Commemorative coins" imageUrl="./imageCategories/commemorativeCoins.svg"/>
     </div>
   )
 }

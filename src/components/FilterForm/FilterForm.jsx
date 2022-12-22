@@ -1,16 +1,48 @@
-import { useSelector } from "react-redux"
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
 import "./FilterForm.css"
+import { useRef } from "react";
 
 function FilterForm() {
-  
+
+  let dispatch = useDispatch();
+
+  let countrySelectRef = useRef();
+  let metalSelectRef = useRef();
+  let qualitySelectRef = useRef();
+  let fromPriceRef = useRef();
+  let toPriceRef = useRef();
+  let fromYearRef = useRef();
+  let toYearRef = useRef();
+
+  let selectCountries = [];
+  let uniqueSelectCountries = [];
+
+  let selectMetals = [];
+  let uniqueSelectMetals = [];
+
+  let selectQuality = [];
+  let uniqueSelectQuality = [];
+
+  let { data } = useSelector((state) => {
+    return state;
+  })
+
   let { formVisible } = useSelector(
     function (e) {
       return e;
     }
   );
 
+  let selectHandler = () => {
+    dispatch({
+      type: "FILTER_FORM_CHANGE",
+      load: [countrySelectRef.current.value, metalSelectRef.current.value, qualitySelectRef.current.value, fromPriceRef.current.value, toPriceRef.current.value, fromYearRef.current.value, toYearRef.current.value]
+    })
+  }
+
   return (formVisible &&
-    <header className='FilterForm'>
+    <div className='FilterForm'>
       <div>
         <form>
           <div className='form-body'>
@@ -19,13 +51,17 @@ function FilterForm() {
                 <label>
                   Issuing country
                 </label>
-                <select>
-                  <option value={"canada"}>
-                    Canada
-                  </option>
-                  <option value={"azerbaijan"}>
-                    Azerbaijan
-                  </option>
+                <select ref={countrySelectRef} onChange={selectHandler}>
+                  {
+                    data.map((item) => {
+                      selectCountries.push(item.tableData["Issuing Country"]);
+                      uniqueSelectCountries = [...new Set(selectCountries)];
+                    })
+                  }
+                  {
+                    uniqueSelectCountries.map((item) => {
+                    return <option key={item.id} value={item}>{item}</option>
+                  })}
                 </select>
               </div>
 
@@ -33,13 +69,16 @@ function FilterForm() {
                 <label>
                   Metal
                 </label>
-                <select>
-                  <option value={"gold"}>
-                    Gold
-                  </option>
-                  <option value={"silver"}>
-                    Silver
-                  </option>
+                <select ref={metalSelectRef} onChange={selectHandler}>
+                  {
+                    data.map((item) => {
+                      selectMetals.push(item.tableData.Composition);
+                      uniqueSelectMetals = [...new Set(selectMetals)];
+                    })
+                  }
+                  {uniqueSelectMetals.map((item) => {
+                    return <option key={item.id} value={item}>{item}</option>
+                  })}
                 </select>
               </div>
 
@@ -47,13 +86,16 @@ function FilterForm() {
                 <label>
                   Quality of the coin
                 </label>
-                <select>
-                  <option value={"proof"}>
-                    Proof
-                  </option>
-                  <option value={"proof2"}>
-                    Proof2
-                  </option>
+                <select ref={qualitySelectRef} onChange={selectHandler}>
+                  {
+                    data.map((item) => {
+                      selectQuality.push(item.tableData.Quality);
+                      uniqueSelectQuality = [...new Set(selectQuality)];
+                    })
+                  }
+                  {uniqueSelectQuality.map((item) => {
+                    return <option key={item.id}>{item}</option>
+                  })}
                 </select>
               </div>
 
@@ -67,9 +109,9 @@ function FilterForm() {
 
                 <div className='flex'>
                   <span>from </span>
-                  <input type={"number"} />
+                  <input type={"number"} ref={fromPriceRef} onChange={selectHandler} />
                   <span> to </span>
-                  <input type={"number"} />
+                  <input type={"number"} ref={toPriceRef} onChange={selectHandler} />
                 </div>
 
               </div>
@@ -81,19 +123,18 @@ function FilterForm() {
 
                 <div className='flex'>
                   <span>from </span>
-                  <input type={"number"} />
+                  <input type={"number"} ref={fromYearRef} onChange={selectHandler} />
                   <span> to </span>
-                  <input type={"number"} />
+                  <input type={"number"} ref={toYearRef} onChange={selectHandler} />
                 </div>
 
               </div>
-
 
             </div>
           </div>
         </form>
       </div>
-    </header>
+    </div>
   )
 
 }

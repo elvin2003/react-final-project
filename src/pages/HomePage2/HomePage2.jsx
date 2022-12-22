@@ -4,7 +4,6 @@ import Header from '../../components/Header/Header'
 
 
 function HomePage2() {
-
   return (
     <div className="HomePage2">
       <Header />

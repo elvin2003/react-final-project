@@ -16,11 +16,10 @@
   display: flex;
   align-items: center;
   color: #000000;
-  margin-bottom: 25px;
 }
 
 label,
-span {
+span:not(.path span) {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -81,10 +80,32 @@ button {
   text-align: center;
 }
 
-.flex span{
+.flex span {
   margin-right: 10px;
 }
 
-a{
+a {
   color: #000000;
+}
+
+.path {
+  color: #B1ABAB;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 109%;
+  align-items: center;
+}
+
+.path > span:first-child{
+  text-decoration: underline;
+}
+
+.active{
+  display: inline;
+}
+
+.passive{
+  display: none;
 }
